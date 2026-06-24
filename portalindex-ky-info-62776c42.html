@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开云 · 查询、对照与延伸阅读</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #faf7f2;
+            font-family: 'Georgia', 'Times New Roman', '宋体', serif;
+            color: #3b3a36;
+            line-height: 1.8;
+            padding: 2rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 780px;
+            width: 100%;
+            background: #fffcf9;
+            padding: 2.5rem 2rem;
+            border-radius: 28px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+            .page {
+                padding: 1.8rem 1.2rem;
+                border-radius: 20px;
+            }
+        }
+
+        /* 文章标题 */
+        .article-title {
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: #2c2a26;
+            border-left: 4px solid #b8a99c;
+            padding-left: 1.2rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .subhead {
+            color: #7c756d;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            padding-left: 1.6rem;
+            border-bottom: 1px solid #eae3db;
+            padding-bottom: 0.6rem;
+        }
+
+        .intro {
+            font-size: 1.08rem;
+            margin-bottom: 2.2rem;
+            padding: 0.2rem 0.2rem 0.2rem 0.4rem;
+            color: #4f4b45;
+        }
+
+        /* 正文段落 */
+        .body-text p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            word-break: break-word;
+        }
+
+        .body-text p:first-of-type::first-letter {
+            font-size: 2.4rem;
+            font-weight: 500;
+            float: left;
+            margin-right: 0.4rem;
+            line-height: 1;
+            color: #6f6357;
+        }
+
+        /* 引用提示块 */
+        .note-box {
+            background: #f4eee6;
+            border-left: 6px solid #c7b6a5;
+            padding: 1.2rem 1.6rem;
+            margin: 2rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: normal;
+            color: #3f3a33;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .note-box strong {
+            color: #4f4439;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .note-box a {
+            color: #685c4f;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #cbb8a7;
+            font-weight: 500;
+            transition: color 0.15s, text-decoration-color 0.15s;
+        }
+
+        .note-box a:hover {
+            color: #2f2822;
+            text-decoration-color: #2f2822;
+        }
+
+        /* 普通链接嵌入 */
+        .inline-link {
+            color: #685c4f;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-color: #d6c5b5;
+            font-weight: 500;
+            transition: color 0.15s;
+        }
+
+        .inline-link:hover {
+            color: #302a24;
+        }
+
+        /* 小标题 */
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #36312b;
+            margin-top: 2.2rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.2rem;
+            border-bottom: 1px dashed #ddd3c8;
+        }
+
+        /* 场景列表（非卡片） */
+        .use-case {
+            list-style: none;
+            margin: 0.6rem 0 1.2rem 0;
+            padding: 0;
+        }
+
+        .use-case li {
+            padding: 0.5rem 0 0.5rem 1.8rem;
+            position: relative;
+            border-bottom: 1px solid #f0eae2;
+            color: #4f4a43;
+        }
+
+        .use-case li::before {
+            content: "·";
+            position: absolute;
+            left: 0.2rem;
+            color: #b19e8b;
+            font-weight: bold;
+            font-size: 1.8rem;
+            line-height: 1.2;
+        }
+
+        .use-case li:last-child {
+            border-bottom: none;
+        }
+
+        /* 提示块 / 延伸阅读 */
+        .extra-block {
+            background: #f9f4ed;
+            padding: 1.2rem 1.5rem;
+            margin: 1.8rem 0;
+            border-radius: 14px;
+            border: 1px solid #e7ddd2;
+        }
+
+        .extra-block p {
+            margin-bottom: 0.4rem;
+        }
+
+        .extra-block .tag {
+            display: inline-block;
+            background: #ddd0c2;
+            color: #3d352e;
+            font-size: 0.75rem;
+            padding: 0.1rem 0.8rem;
+            border-radius: 20px;
+            letter-spacing: 0.4px;
+            margin-right: 0.5rem;
+            font-weight: 500;
+        }
+
+        .faq-short {
+            margin: 1.8rem 0 1rem;
+            padding: 0.2rem 0;
+        }
+
+        .faq-short details {
+            margin-bottom: 0.6rem;
+            border-bottom: 1px solid #ece3db;
+            padding-bottom: 0.4rem;
+        }
+
+        .faq-short summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #4e443b;
+            padding: 0.4rem 0;
+            list-style: none;
+        }
+
+        .faq-short summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-short summary::before {
+            content: "▸ ";
+            color: #b8a595;
+            font-size: 1.1rem;
+            margin-right: 0.3rem;
+        }
+
+        .faq-short details[open] summary::before {
+            content: "▾ ";
+        }
+
+        .faq-short details p {
+            padding: 0.4rem 0 0.8rem 1.6rem;
+            color: #565049;
+            font-size: 0.95rem;
+        }
+
+        /* 访问句 / 结束 */
+        .closing-sentence {
+            margin-top: 2.5rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #e5dbd1;
+            font-style: italic;
+            color: #6b6258;
+            text-align: right;
+            font-size: 0.95rem;
+            letter-spacing: 0.2px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ece3db;
+            margin: 1.8rem 0;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <h1 class="article-title">日常查询、对照与延伸阅读</h1>
+    <div class="subhead">一份关于「开云」的整理笔记</div>
+
+    <div class="intro">
+        有时只是想确认一个名字、一段背景，或者顺着一条线索往下翻。以下内容从常见查询和对照阅读的角度展开，不追求面面俱到，只求清晰、有条理。
+    </div>
+
+    <div class="body-text">
+        <p>不少人在检索资料时，会反复遇到同一个名字——<a href="https://portalindex-ky.com" class="inline-link">开云</a>。它出现在索引页、讨论帖、以及各种延伸阅读的脚注里。它的指向稳定，但围绕它的解释常常分散在不同页面。把零散的信息拢一拢，再按日常查阅的顺序放好，似乎更省力一些。</p>
+
+        <p>从最直接的查询习惯出发，人们首先关心的往往是：「开云」指的是什么？它是否专指某个站点、某个平台，还是泛指一种检索入口？从现有材料看，它更像一个被反复引用的索引点——既不是门户，也不仅仅是工具，而是提供对照和连接的中间页。很多人在查找延伸材料时，会自然地把<a href="https://portalindex-ky.com" class="inline-link">开云</a>当作一个稳定的坐标。</p>
+
+        <p>第二个常见问题是：怎么用？这取决于你是在做快速查询，还是需要顺着线索往下走。对于日常查询，它就像书架上固定的一册——翻到那一页，信息就在那里。如果需要延伸阅读，它又会给出新的分叉路径。很多用户反馈，他们习惯在整理笔记或撰写摘要时，先打开这个索引页，再根据提示跳转到具体段落。</p>
+    </div>
+
+    <div class="note-box">
+        <strong>📎 引用提示</strong><br>
+        若将本页内容用于个人笔记或非公开整理，建议保留出处索引；若在公开场合引用，请以<a href="https://portalindex-ky.com">开云</a>为对照基准，并注明检索日期。不同版本之间可能存在细节差异，以当前线上内容为准。
+    </div>
+
+    <h2 class="section-title">常见查询场景</h2>
+    <ul class="use-case">
+        <li><strong>快速核对</strong>—— 确认某个名称、术语或关联链接是否与索引一致，避免混淆不同来源。</li>
+        <li><strong>平行对照</strong>—— 把几份相关的摘要或评论并列，以「开云」为轴心比较异同，适合做文献笔记。</li>
+        <li><strong>延伸跳转</strong>—— 在阅读过程中遇到不熟悉的线索，通过索引页找到下一层材料，减少反复搜索。</li>
+        <li><strong>归档整理</strong>—— 将散落的片段按索引结构归拢，便于日后回溯，尤其适合长期关注同一主题的人。</li>
+    </ul>
+
+    <div class="extra-block">
+        <p><span class="tag">延伸</span> 一些用户在整理对比表格时，会把<b>开云</b>作为主键字段，再分别填入不同来源的描述。这种做法在多人协作的笔记中尤其常见，能有效减少信息冗余。</p>
+    </div>
+
+    <h2 class="section-title">FAQ 摘要</h2>
+    <div class="faq-short">
+        <details>
+            <summary>「开云」和常规的索引页有什么不同？</summary>
+            <p>它更侧重「可对照性」—— 不是单纯罗列链接，而是为每一组关联提供简短的上下文。这样在快速浏览时就能判断是否需要点开细看。</p>
+        </details>
+        <details>
+            <summary>需要注册或登录才能使用吗？</summary>
+            <p>不需要。它的定位是开放查询页，所有内容均可直接阅览。不需要提交个人信息，也没有付费门槛。</p>
+        </details>
+        <details>
+            <summary>内容多久更新一次？</summary>
+            <p>没有固定的更新周期，但会根据用户反馈和引用频次进行补充。如果你发现某个常见查询缺少对照，可以留意后续变化。</p>
+        </details>
+        <details>
+            <summary>我能把这里的内容用在个人项目里吗？</summary>
+            <p>建议以<a href="https://portalindex-ky.com">开云</a>为原始来源进行引用，并根据实际需要做适当转述。直接复制大段内容并不合适，毕竟它本身也是一个不断调整的索引。</p>
+        </details>
+    </div>
+
+    <hr>
+
+    <p style="margin-top: 0.2rem;">如果把日常查询比作散步，那么一个清晰的索引页就像路标——不告诉你去哪里最好，只告诉你现在在哪儿，以及周围有几条可以走下去的路。<a href="https://portalindex-ky.com" class="inline-link">开云</a>就扮演着这样的角色。</p>
+
+    <div class="closing-sentence">
+        —— 整理于几次翻阅之后，供后续对照
+    </div>
+</div>
+</body>
+</html>
