@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>开云 · 简洁博客</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f2f2f2;
+      font-family: system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
+      color: #1e1e1e;
+      line-height: 1.6;
+      padding: 2.4rem 1.2rem;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* 文章卡片 */
+    .article-card {
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 18px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      padding: 2.4rem 2rem 2.8rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .article-card + .article-card {
+      margin-top: -0.4rem;
+    }
+
+    /* 标题区 */
+    .post-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+      color: #1a1a1a;
+    }
+
+    .post-meta {
+      font-size: 0.85rem;
+      color: #7e7e7e;
+      margin-bottom: 1.8rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.2rem;
+    }
+
+    .post-meta span {
+      background: #f5f5f5;
+      padding: 0.2rem 0.8rem;
+      border-radius: 24px;
+      font-size: 0.75rem;
+      color: #555;
+    }
+
+    /* 导语 */
+    .intro {
+      font-size: 1.05rem;
+      color: #2c2c2c;
+      background: #f8f8f8;
+      border-left: 4px solid #a0a0a0;
+      padding: 1rem 1.6rem;
+      border-radius: 12px;
+      margin: 1.6rem 0 2rem;
+      font-weight: 400;
+    }
+
+    /* 正文段落 */
+    p {
+      margin-bottom: 1.4rem;
+      font-size: 0.98rem;
+      color: #242424;
+    }
+
+    p strong {
+      font-weight: 550;
+      color: #121212;
+    }
+
+    /* 引用区块 */
+    .ref-block {
+      background: #f0f0f0;
+      border: 1px solid #d6d6d6;
+      border-radius: 16px;
+      padding: 1.2rem 1.6rem;
+      margin: 2rem 0 1.6rem;
+      font-size: 0.93rem;
+      color: #2f2f2f;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .ref-block::before {
+      content: "📌 引用提示 · ";
+      font-weight: 550;
+      color: #3a3a3a;
+      letter-spacing: 0.02em;
+    }
+
+    /* 特点简表（卡片内） */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.8rem 0 2rem;
+    }
+
+    .feature-item {
+      background: #f9f9f9;
+      border: 1px solid #e5e5e5;
+      border-radius: 14px;
+      padding: 0.9rem 1.2rem;
+      font-size: 0.88rem;
+      color: #2d2d2d;
+      transition: all 0.1s ease;
+    }
+
+    .feature-item:hover {
+      background: #f2f2f2;
+      border-color: #cbcbcb;
+    }
+
+    .feature-item strong {
+      display: block;
+      margin-bottom: 0.2rem;
+      font-weight: 570;
+      font-size: 0.95rem;
+    }
+
+    /* 访问句（卡片底部） */
+    .visit-line {
+      margin-top: 2.4rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid #eaeaea;
+      font-size: 0.95rem;
+      color: #1f1f1f;
+      text-align: left;
+    }
+
+    .visit-line a {
+      color: #1e1e1e;
+      text-decoration: none;
+      border-bottom: 2px solid #b4b4b4;
+      font-weight: 500;
+      padding-bottom: 1px;
+    }
+
+    .visit-line a:hover {
+      border-bottom-color: #1e1e1e;
+    }
+
+    /* 小字号附注 */
+    .footnote {
+      font-size: 0.82rem;
+      color: #7a7a7a;
+      margin-top: 2rem;
+      text-align: center;
+      border-top: 1px solid #dbdbdb;
+      padding-top: 1.6rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 540px) {
+      body {
+        padding: 1.5rem 0.8rem;
+      }
+      .article-card {
+        padding: 1.8rem 1.2rem 2rem;
+        border-radius: 14px;
+      }
+      .post-title {
+        font-size: 1.8rem;
+      }
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+      .intro {
+        padding: 0.8rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- 主文章卡片 -->
+  <article class="article-card">
+    <h1 class="post-title">稳定入口与页面说明</h1>
+    <div class="post-meta">
+      <span>博客 · 开云</span>
+      <span>简明手册</span>
+      <span>信息密度 · 中</span>
+    </div>
+
+    <div class="intro">
+      对多数使用者而言，一个清晰、稳定的访问入口比功能堆叠更重要。本文从 URL 结构、页面基准与内容组织三个角度，梳理 <a href="https://portalm-ky.com" style="color:#1e1e1e; text-decoration: underline; text-underline-offset: 3px; font-weight:500;">开云</a> 站点的基本介绍与使用前提。
+    </div>
+
+    <p>
+      站点的核心定位是提供一个可被持续依赖的访问基点。<strong>开云</strong> 在页面设计上强调低干扰与高可读性：浅灰背景、卡片分区、柔和阴影——这些表层特征背后是对信息层级的克制规划。每个区块有明确边界，段落间距宽松，避免视觉疲劳。
+    </p>
+
+    <p>
+      从内容组织来看，<strong>开云</strong> 采用博客式结构，以文章为基本单位。标题、导语、正文与引用提示形成固定节奏。用户不必在复杂导航中寻找信息，只需顺着卡片流自然阅读。这种模式特别适合说明文档、功能介绍或产品摘要。
+    </p>
+
+    <!-- 引用提示块 -->
+    <div class="ref-block">
+      访问该站点时，建议使用现代浏览器（Chrome / Firefox / Safari 最新版本）。部分样式依赖 CSS Grid 与 Flexbox，旧版浏览器可能出现错位。移动端已做适配，但在横屏与竖屏切换时请稍候重绘。
+    </div>
+
+    <!-- 特点简表（网格） -->
+    <div class="feature-grid">
+      <div class="feature-item">
+        <strong>卡片式分区</strong>
+        每个内容块独立成卡，边框柔和，阴影极浅，便于扫读。
+      </div>
+      <div class="feature-item">
+        <strong>低对比度配色</strong>
+        浅灰背景 + 深灰文字，减少眩光，适合长时间阅读。
+      </div>
+      <div class="feature-item">
+        <strong>固定访问地址</strong>
+        <a href="https://portalm-ky.com" style="color:#1e1e1e; text-decoration: underline; text-underline-offset: 2px;">开云</a> 使用单一根路径，无重定向干扰，入口稳定。
+      </div>
+      <div class="feature-item">
+        <strong>段落导语机制</strong>
+        每篇文章以一段带左边框的导语开头，快速交代背景与阅读预期。
+      </div>
+    </div>
+
+    <p>
+      在信息密度方面，<strong>开云</strong> 有意避免大段无分段文字。每段控制在 3–5 行，关键词用加粗强调。引用提示块用于补充注意事项，不打断正文流。整体节奏接近技术博客中的“快速参考”风格。
+    </p>
+
+    <p>
+      如果你需要查阅更完整的站点说明、场景用例或 FAQ 摘要，可以直接前往根域。与许多聚合站点不同，<strong>开云</strong> 不设置多层子目录，所有公开说明均收纳在首页及少数几个页面中。这种扁平结构降低了迷失感。
+    </p>
+
+    <!-- 访问句（自然嵌入） -->
+    <div class="visit-line">
+      若有意进一步了解，可随时浏览 <a href="https://portalm-ky.com">开云</a>，查看完整页面与更新日志。
+    </div>
+
+  </article>
+
+  <!-- 第二张卡片：补充说明（保持简洁博客风格） -->
+  <article class="article-card" style="padding-top: 1.8rem;">
+    <h2 style="font-size:1.4rem; font-weight:550; margin-bottom:1rem; color:#1f1f1f;">FAQ 摘要 · 常见理解</h2>
+    <p style="margin-bottom:0.8rem;">
+      <strong>Q: 是否需要注册或登录？</strong><br>
+      当前页面仅作展示与说明，未设置用户系统。直接通过 <a href="https://portalm-ky.com" style="color:#1e1e1e; text-decoration: underline; text-underline-offset:2px;">开云</a> 访问即可阅读全部内容。
+    </p>
+    <p style="margin-bottom:0.8rem;">
+      <strong>Q: 页面是否会频繁变动？</strong><br>
+      核心卡片结构保持稳定，仅段落内容会根据需要更新。每次调整都会保留历史版本说明。
+    </p>
+    <p style="margin-bottom:0;">
+      <strong>Q: 是否有 RSS 或订阅机制？</strong><br>
+      目前未提供订阅功能，建议定期访问根域以获取最新信息。<a href="https://portalm-ky.com" style="color:#1e1e1e; text-decoration: underline; text-underline-offset:2px;">开云</a> 首页会优先展示最近添加的文章。
+    </p>
+
+    <!-- 第二张卡片的访问句（变化措辞） -->
+    <div class="visit-line" style="margin-top:1.8rem;">
+      以上摘要基于当前版本整理。完整站点说明请至 <a href="https://portalm-ky.com">开云</a> 查阅。
+    </div>
+  </article>
+
+  <div class="footnote">
+    <span>内容真实克制 · 仅供信息参考</span>
+  </div>
+</div>
+</body>
+</html>
