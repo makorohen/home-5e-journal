@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开云 · 简洁介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f5f7fb;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0b0f1c 0%, #1a2236 100%);
+            padding: 4rem 2rem 3.5rem;
+            text-align: center;
+            color: #e8edf5;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #3b4b6b, transparent);
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero .sub {
+            font-size: 1.05rem;
+            color: #9aaec9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 浅色正文区 */
+        .content {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 2.8rem 1.8rem 4rem;
+        }
+
+        .content section {
+            margin-bottom: 2.6rem;
+        }
+
+        .content h2 {
+            font-size: 1.35rem;
+            font-weight: 500;
+            color: #0f172a;
+            border-left: 3px solid #3b6ea5;
+            padding-left: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .content p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            color: #2c3e50;
+        }
+
+        /* 强调色用于链接 */
+        a {
+            color: #1a6bb0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.15s, border-bottom 0.1s;
+            border-bottom: 1px solid transparent;
+        }
+
+        a:hover {
+            color: #0c4a8a;
+            border-bottom-color: #1a6bb0;
+        }
+
+        /* 引用提示卡片 */
+        .quote-note {
+            background: #eef3fa;
+            border-left: 4px solid #3b6ea5;
+            padding: 1.2rem 1.5rem;
+            margin: 1.6rem 0;
+            border-radius: 0 8px 8px 0;
+            color: #1e293b;
+            font-size: 0.98rem;
+        }
+
+        .quote-note strong {
+            color: #1a4d7a;
+        }
+
+        /* 特点网格 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin-top: 0.6rem;
+        }
+
+        .feature-item {
+            background: white;
+            border-radius: 10px;
+            padding: 1.1rem 1.2rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            border: 1px solid #e2e8f0;
+        }
+
+        .feature-item h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-item p {
+            font-size: 0.92rem;
+            color: #475569;
+            margin-bottom: 0;
+        }
+
+        /* 访问句区域 */
+        .visit-line {
+            background: #f1f6fe;
+            padding: 1.5rem 1.8rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            text-align: center;
+            border: 1px solid #d6e2f0;
+        }
+
+        .visit-line .big-link {
+            font-size: 1.25rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero .sub {
+                font-size: 0.95rem;
+            }
+
+            .content {
+                padding: 2rem 1.2rem 3rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 0.9rem;
+            }
+
+            .quote-note {
+                padding: 1rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>开云 · 轻量定位</h1>
+    <div class="sub">一张页面，厘清平台属性与使用方向</div>
+</div>
+
+<div class="content">
+
+    <!-- 导语段落：从用户判断用途切入 -->
+    <section>
+        <h2>从名字到用途</h2>
+        <p>初次看到「开云」二字，很多人会自然联想：这是一个云端工具？企业服务？还是内容社区？实际上，<a href="https://portalofficial-ky.com">开云</a> 是一个综合性信息与功能入口，面向需要快速获取特定服务或资源的用户。它并不绑定单一行业，而是聚合了多个实用模块，让访客能根据自身目的自由探索。</p>
+        <p>如果你正在寻找一个结构清晰、无需多余注册即可了解核心内容的站点，开云的首页很可能就是你要的起点。以下从几个使用角度，拆解它的实际面貌。</p>
+    </section>
+
+    <!-- 特点/场景 混合呈现 (使用卡片网格) -->
+    <section>
+        <h2>常见使用场景</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <h3>信息获取</h3>
+                <p>通过分类导航与摘要，快速了解不同板块的主题定位，避免在无关页面中浪费时间。</p>
+            </div>
+            <div class="feature-item">
+                <h3>工具访问</h3>
+                <p>内置若干轻量工具或跳转，适合需要直接使用功能而非阅读广告的用户。</p>
+            </div>
+            <div class="feature-item">
+                <h3>内容浏览</h3>
+                <p>部分区域提供精选内容或动态更新，适合希望保持信息同步的访客。</p>
+            </div>
+            <div class="feature-item">
+                <h3>方向判断</h3>
+                <p>首页结构本身即是一种指引——从导航布局即可大致了解站点的服务边界。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 引用提示 (特色插入) -->
+    <div class="quote-note">
+        <strong>提示：</strong> 当你不确定某个站点是否满足需求时，先看它的首页是否在 3 秒内回答了“这是什么”与“我能做什么”两个问题。<a href="https://portalofficial-ky.com">开云</a> 的首页设计正是围绕这一逻辑展开。
+    </div>
+
+    <!-- 更多正文段落：从用户真实疑问切入 -->
+    <section>
+        <h2>三个常见疑问</h2>
+        <p><strong>Q：是否需要注册才能看到内容？</strong><br>首页绝大多数信息无需登录即可阅读，部分进阶功能或个性化设置才需要账户，这一点在页面内的提示区域会有说明。</p>
+        <p><strong>Q：内容更新频率如何？</strong><br>根据板块性质不同，更新节奏从实时到每周不等。首页会优先展示近期有变动的区域，方便回头客快速感知变化。</p>
+        <p><strong>Q：与其他类似站点有何区别？</strong><br>开云不强调社交或 UGC 属性，更偏向“工具 + 信息”的组合，界面干扰元素较少，适合目标明确的访问者。</p>
+    </section>
+
+    <!-- 访问句 自然嵌入 -->
+    <div class="visit-line">
+        <span class="big-link">若想直接了解站点全貌，可前往 <a href="https://portalofficial-ky.com">开云</a> 浏览当前版本的结构与内容。</span>
+        <p style="margin-top:0.6rem; font-size:0.9rem; color:#4a5a72;">无需多余跳转，首页即包含主要指引。</p>
+    </div>
+
+    <!-- 结尾段落：简洁收束 -->
+    <section style="margin-top: 1.8rem;">
+        <p style="font-size:0.95rem; color:#5a6f85; border-top:1px solid #e0e7ef; padding-top:1.6rem;">
+            以上介绍基于公开可读信息与一般使用体验整理，不构成任何承诺。页面功能与内容以实际站点为准。
+        </p>
+    </section>
+
+</div>
+
+</body>
+</html>
